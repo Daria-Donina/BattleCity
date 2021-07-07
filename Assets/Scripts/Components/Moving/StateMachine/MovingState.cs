@@ -18,7 +18,7 @@ namespace Assets.Scripts.Components.Moving.StateMachine
 		private static StandingState _standing = StandingState.GetInstance();
 
 		public virtual Vector3 Direction { get; protected set; }
-		public virtual Vector3 Rotation { get; protected set; }
+		public virtual float Rotation { get; protected set; }
 
 		public virtual int AnimatorState { get; protected set; }
 

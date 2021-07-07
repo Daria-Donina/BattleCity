@@ -11,6 +11,7 @@ namespace Assets.Scripts.Components.Moving.StateMachine.States
 	public class GoingUpState : MovingState
 	{
 		public override Vector3 Direction { get; protected set; } = Vector3.up;
+		public override float Rotation { get; protected set; } = 0;
 		public override int AnimatorState { get; protected set; } = 3;
 		private static GoingUpState _instance;
 		public static GoingUpState GetInstance()

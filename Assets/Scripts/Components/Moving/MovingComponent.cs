@@ -17,14 +17,11 @@ namespace Assets.Scripts.Components.Moving
 		private Rigidbody2D _rigidbody;
 
 		public MovingState State { private get; set; } = GoingUpState.GetInstance();
-		public Vector3 LookingAt { get; private set; }
 
 		private void Awake()
 		{
 			_animator = GetComponent<Animator>();
 			_rigidbody = GetComponent<Rigidbody2D>();
-
-			LookingAt = State.Direction;
 		}
 
 		private void Update()
@@ -32,16 +29,17 @@ namespace Assets.Scripts.Components.Moving
 			State.Update(this);
 
 			_rigidbody.AddForce(State.Direction * speed, ForceMode2D.Force);
+			
 
 			if (State.AnimatorState == 0)
 			{
-				_animator.enabled = false;
+				_animator.speed = 0;
 			}
 			else
 			{
-				LookingAt = State.Direction;
+				_rigidbody.MoveRotation(State.Rotation);
 
-				_animator.enabled = true;
+				_animator.speed = 1;
 				_animator.SetInteger("State", State.AnimatorState);
 			}
 		}
