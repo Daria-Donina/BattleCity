@@ -10,7 +10,6 @@ namespace Assets.Scripts.Components.Moving.StateMachine.States
 	class StandingState : MovingState
 	{
 		public override Vector3 Direction { get; protected set; } = Vector3.zero;
-		public override int AnimatorState { get; protected set; } = 0;
 		private static StandingState _instance;
 		public static StandingState GetInstance()
 		{

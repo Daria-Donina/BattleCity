@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Components.Moving.StateMachine.States;
+using Assets.Scripts.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,29 +21,27 @@ namespace Assets.Scripts.Components.Moving.StateMachine
 		public virtual Vector3 Direction { get; protected set; }
 		public virtual float Rotation { get; protected set; }
 
-		public virtual int AnimatorState { get; protected set; }
-
-		public virtual void Update(MovingComponent movingComponent)
+		public virtual void Update(MovingComponent movingComponent, MovingController controller)
 		{
-			if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+			if (controller.X == 0 && controller.Y == 0)
 			{
 				movingComponent.State = _standing;
 			}
 
-			if (Input.GetAxisRaw("Horizontal") > 0)
+			if (controller.X > 0)
 			{
 				movingComponent.State = _goingRight;
 			}
-			else if (Input.GetAxisRaw("Horizontal") < 0)
+			else if (controller.X < 0)
 			{
 				movingComponent.State = _goingLeft;
 			}
 
-			if (Input.GetAxisRaw("Vertical") > 0)
+			if (controller.Y > 0)
 			{
 				movingComponent.State = _goingUp;
 			}
-			else if (Input.GetAxisRaw("Vertical") < 0)
+			else if (controller.Y < 0)
 			{
 				movingComponent.State = _goingDown;
 			}

@@ -11,13 +11,9 @@ namespace Assets.Scripts.Components.Shooting
 		[SerializeField]
 		private BulletPool weapon;
 
-		// Update is called once per frame
-		void Update()
+		public void Shoot()
 		{
-			if (Input.GetButtonDown("Shoot"))
-			{
-				weapon.GetBullet(transform.position).Shoot(transform.up);
-			}
+			weapon.GetBullet(transform.position).Shoot(transform.up);
 		}
 	}
 }

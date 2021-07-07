@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GoDown
+  m_Name: GoUpEnemy
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 958319369113950586, guid: d7bd0da1aa2f33844a3cfcbab8cad064, type: 3}
+      value: {fileID: 584564711428505263, guid: d7bd0da1aa2f33844a3cfcbab8cad064, type: 3}
     - time: 0.016666668
-      value: {fileID: -8893717287099648703, guid: d7bd0da1aa2f33844a3cfcbab8cad064, type: 3}
+      value: {fileID: 5046275854423184689, guid: d7bd0da1aa2f33844a3cfcbab8cad064, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 958319369113950586, guid: d7bd0da1aa2f33844a3cfcbab8cad064, type: 3}
-    - {fileID: -8893717287099648703, guid: d7bd0da1aa2f33844a3cfcbab8cad064, type: 3}
+    - {fileID: 584564711428505263, guid: d7bd0da1aa2f33844a3cfcbab8cad064, type: 3}
+    - {fileID: 5046275854423184689, guid: d7bd0da1aa2f33844a3cfcbab8cad064, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

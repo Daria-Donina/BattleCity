@@ -12,7 +12,6 @@ namespace Assets.Scripts.Components.Moving.StateMachine.States
 	{
 		public override Vector3 Direction { get; protected set; } = Vector3.left;
 		public override float Rotation { get; protected set; } = 90;
-		public override int AnimatorState { get; protected set; } = 3;
 
 		private static GoingLeftState _instance;
 		public static GoingLeftState GetInstance()
