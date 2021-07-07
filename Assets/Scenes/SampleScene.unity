@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 444003081}
   - component: {fileID: 444003082}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1403,7 +1403,7 @@ GameObject:
   - component: {fileID: 1452371960}
   - component: {fileID: 1452371961}
   - component: {fileID: 1452371962}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

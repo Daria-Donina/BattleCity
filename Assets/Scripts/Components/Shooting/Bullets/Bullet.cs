@@ -7,7 +7,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.Components.Shooting.Bullets
 {
-	//[RequireComponent(typeof(Rigidbody2D))]
+	[RequireComponent(typeof(Rigidbody2D))]
+	[RequireComponent(typeof(Collider2D))]
 	public class Bullet : MonoBehaviour
 	{
 		[SerializeField] private float speed = 10f;
