@@ -7,18 +7,22 @@ using UnityEngine;
 namespace Assets.Scripts.Components.Moving
 {
 	[RequireComponent(typeof(Animator))]
+	[RequireComponent(typeof(Rigidbody2D))]
 	public class MovingComponent : MonoBehaviour
 	{
 		[SerializeField]
 		private float speed;
 
 		private Animator _animator;
+		private Rigidbody2D _rigidbody;
+
 		public MovingState State { private get; set; } = GoingUpState.GetInstance();
 		public Vector3 LookingAt { get; private set; }
 
 		private void Awake()
 		{
 			_animator = GetComponent<Animator>();
+			_rigidbody = GetComponent<Rigidbody2D>();
 
 			LookingAt = State.Direction;
 		}
@@ -27,7 +31,7 @@ namespace Assets.Scripts.Components.Moving
 		{
 			State.Update(this);
 
-			transform.Translate(State.Direction * speed * Time.deltaTime);
+			_rigidbody.AddForce(State.Direction * speed, ForceMode2D.Force);
 
 			if (State.AnimatorState == 0)
 			{
