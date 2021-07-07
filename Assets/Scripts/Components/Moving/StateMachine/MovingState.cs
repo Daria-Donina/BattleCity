@@ -18,13 +18,12 @@ namespace Assets.Scripts.Components.Moving.StateMachine
 		private static StandingState _standing = StandingState.GetInstance();
 
 		public virtual Vector3 Direction { get; protected set; }
+		public virtual Vector3 Rotation { get; protected set; }
+
 		public virtual int AnimatorState { get; protected set; }
 
 		public virtual void Update(MovingComponent movingComponent)
 		{
-			Debug.Log(Input.GetAxisRaw("Vertical"));
-			Debug.Log(Input.GetAxisRaw("Horizontal"));
-
 			if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
 			{
 				movingComponent.State = _standing;
