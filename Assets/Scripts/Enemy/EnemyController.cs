@@ -39,7 +39,8 @@ namespace Assets.Scripts.Enemy
 
 		private void OnDisable()
 		{
-			StopAllCoroutines();
+			StopCoroutine(_movingRoutine);
+			StopCoroutine(_shootingRoutine);
 		}
 
 		private void OnCollisionEnter2D(Collision2D collision)
@@ -51,11 +52,11 @@ namespace Assets.Scripts.Enemy
 		{
 			while (true)
 			{
-				ChangeDirection();
-
 				yield return new WaitForSeconds(
 					Random.Range(minDirectionTime, maxDirectionTime)
 					);
+
+				ChangeDirection();
 			}
 		}
 
