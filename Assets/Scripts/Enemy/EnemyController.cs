@@ -17,22 +17,29 @@ namespace Assets.Scripts.Enemy
 		[SerializeField] private int minDirectionTime = 1;
 		[SerializeField] private int maxDirectionTime = 6;
 
-		[SerializeField] private int shotDelay = 3;
+		[SerializeField] private int shotDelay;
 
 		public ShootingEvent FireShot = new ShootingEvent(); 
 
 		private int[] _coordinates = new int[4] { -1, 1, 0, 0 };
-		private IEnumerator _coroutine;
+		private IEnumerator _movingRoutine;
+		private IEnumerator _shootingRoutine;
 
 		private void Awake()
 		{
-			_coroutine = DirectionRoutine();
+			_movingRoutine = DirectionRoutine();
+			_shootingRoutine = ShootingRoutine();
 		}
 
-		private void Start()
+		private void OnEnable()
 		{
-			StartCoroutine(_coroutine);
-			InvokeRepeating(nameof(Shoot), shotDelay, shotDelay);
+			StartCoroutine(_movingRoutine);
+			StartCoroutine(_shootingRoutine);
+		}
+
+		private void OnDisable()
+		{
+			StopAllCoroutines();
 		}
 
 		private void OnCollisionEnter2D(Collision2D collision)
@@ -49,6 +56,18 @@ namespace Assets.Scripts.Enemy
 				yield return new WaitForSeconds(
 					Random.Range(minDirectionTime, maxDirectionTime)
 					);
+			}
+		}
+
+		private IEnumerator ShootingRoutine()
+		{
+			while (true)
+			{
+				yield return new WaitForSeconds(
+					shotDelay
+					);
+
+				Shoot();
 			}
 		}
 

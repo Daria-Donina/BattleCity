@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1599460301782524538}
   - component: {fileID: 1599460301782524537}
   - component: {fileID: -5530515510237652947}
+  - component: {fileID: 3725442468507278999}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -132,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba02169734fe1f46a5f3b32c1312762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPool: {fileID: 0}
 --- !u!61 &1599460301782524538
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDirectionTime: 1
   maxDirectionTime: 6
-  shotDelay: 1
+  shotDelay: 15
   FireShot:
     m_PersistentCalls:
       m_Calls:
@@ -211,3 +211,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3725442468507278999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599460301782524528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45811fedf3f06f43acd241f78a55027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

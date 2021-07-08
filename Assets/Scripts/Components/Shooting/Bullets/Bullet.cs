@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Components.Damaging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,11 @@ namespace Assets.Scripts.Components.Shooting.Bullets
 
 		private void OnCollisionEnter2D(Collision2D collision)
 		{
+			if (collision.gameObject.TryGetComponent(out DamagingComponent tank))
+			{
+				tank.OnAttack();
+			}
+
 			ReturnToPool();
 		}
 
