@@ -9,7 +9,7 @@ namespace Assets.Scripts.Controllers
 {
 	public abstract class MovingController : MonoBehaviour
 	{
-		public float X { get; protected set; }
-		public float Y { get; protected set; }
+		public abstract float X { get; protected set; }
+		public abstract float Y { get; protected set; }
 	}
 }

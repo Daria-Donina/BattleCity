@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Controllers.Type
+namespace Assets.Scripts.Enemy
 {
-	public class EnemyController : MovingController
+	internal class EnemyPool
 	{
+		 
 	}
 }

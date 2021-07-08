@@ -8,12 +8,20 @@ namespace Assets.Scripts.Components.Shooting
 {
 	public class ShootingComponent : MonoBehaviour
 	{
-		[SerializeField]
-		private BulletPool weapon;
+		private BulletPool _bulletPool;
+
+		private void Awake()
+		{
+			_bulletPool = FindObjectOfType<BulletPool>();
+		}
 
 		public void Shoot()
 		{
-			weapon.GetBullet(transform.position).Shoot(transform.up);
+			var bullet = _bulletPool.GetBullet(transform.position);
+
+			bullet.transform.rotation = transform.rotation;
+
+			bullet.Shoot(transform.up);
 		}
 	}
 }
