@@ -37,7 +37,7 @@ namespace Assets.Scripts.Components.Shooting.Bullets
 
 		private void ReturnToPool()
 		{
-			_bulletPool.ReturnBullet(this);
+			_bulletPool.ReturnObject(this);
 		}
 	}
 }

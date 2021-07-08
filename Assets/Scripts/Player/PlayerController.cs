@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Controllers;
+﻿using Assets.Scripts.Components.Shooting;
+using Assets.Scripts.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,6 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts.Player
 {
-	[Serializable]
-	public class ShootingEvent : UnityEvent { }
-
 	public class PlayerController : MovingController
 	{
 		public ShootingEvent ShootButtonPressed = new ShootingEvent();

@@ -3,9 +3,14 @@ using Assets.Scripts.Components.Shooting.Bullets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using System;
 
 namespace Assets.Scripts.Components.Shooting
 {
+	[Serializable]
+	public class ShootingEvent : UnityEvent {}
+
 	public class ShootingComponent : MonoBehaviour
 	{
 		private BulletPool _bulletPool;
@@ -17,9 +22,10 @@ namespace Assets.Scripts.Components.Shooting
 
 		public void Shoot()
 		{
-			var bullet = _bulletPool.GetBullet(transform.position);
+			var bullet = _bulletPool.GetObject(transform.position);
 
 			bullet.transform.rotation = transform.rotation;
+			bullet.gameObject.layer = gameObject.layer;
 
 			bullet.Shoot(transform.up);
 		}

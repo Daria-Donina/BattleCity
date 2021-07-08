@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba02169734fe1f46a5f3b32c1312762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPool: {fileID: 0}
 --- !u!61 &1599460301782524538
 BoxCollider2D:
   m_ObjectHideFlags: 0

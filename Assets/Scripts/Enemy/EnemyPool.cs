@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Assets.Scripts.Components.Shooting.Bullets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Enemy
 {
-	internal class EnemyPool
+	public class EnemyPool : ObjectPool<EnemyController>
 	{
-		 
 	}
 }
