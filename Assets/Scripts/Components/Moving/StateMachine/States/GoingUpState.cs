@@ -1,13 +1,10 @@
-﻿using Assets.Scripts.Components.Moving.StateMachine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Components.Moving.StateMachine.States
 {
+	/// <summary>
+	/// Class implementing state of going up.
+	/// </summary>
 	public class GoingUpState : MovingState
 	{
 		public override Vector3 Direction { get; protected set; } = Vector3.up;
