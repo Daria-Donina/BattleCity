@@ -35,7 +35,7 @@ namespace Assets.Scripts.Components.Moving
 		{
 			State.Update(this, _controller);
 
-			_rigidbody.AddForce(State.Direction * speed, ForceMode2D.Force);
+			_rigidbody.AddForce(State.Direction * speed * Time.deltaTime, ForceMode2D.Force);
 
 			if (State == StandingState.GetInstance())
 			{

@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d51473eb0feac4d81a7ded3ed4e984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 4000
 --- !u!114 &1599460301782524539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,9 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6f30de47454dd4cbbc89e7cd2282ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDirectionTime: 1
-  maxDirectionTime: 6
-  shotDelay: 1
   FireShot:
     m_PersistentCalls:
       m_Calls:
@@ -211,6 +208,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  minDirectionTime: 1
+  maxDirectionTime: 6
+  shotDelay: 1
 --- !u!114 &3725442468507278999
 MonoBehaviour:
   m_ObjectHideFlags: 0
