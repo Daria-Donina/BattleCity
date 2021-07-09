@@ -1,15 +1,12 @@
 ﻿using Assets.Scripts.Components.Moving.StateMachine.States;
 using Assets.Scripts.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Assets.Scripts.Components.Moving.StateMachine
 {
+	/// <summary>
+	/// Class implementing moving state.
+	/// </summary>
 	public abstract class MovingState
 	{
 		private static GoingLeftState _goingLeft = GoingLeftState.GetInstance();
@@ -18,9 +15,21 @@ namespace Assets.Scripts.Components.Moving.StateMachine
 		private static GoingDownState _goingDown = GoingDownState.GetInstance();
 		private static StandingState _standing = StandingState.GetInstance();
 
-		public virtual Vector3 Direction { get; protected set; }
+		/// <summary>
+		/// Direction of the state.
+		/// </summary>
+		public abstract Vector3 Direction { get; protected set; }
+
+		/// <summary>
+		/// Rotation of the state.
+		/// </summary>
 		public virtual float Rotation { get; protected set; }
 
+		/// <summary>
+		/// Updates moving state.
+		/// </summary>
+		/// <param name="movingComponent"> Component to update state for.</param>
+		/// <param name="controller"> Controller to get state from.</param>
 		public virtual void Update(MovingComponent movingComponent, MovingController controller)
 		{
 			if (controller.X == 0 && controller.Y == 0)

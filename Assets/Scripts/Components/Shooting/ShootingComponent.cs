@@ -8,9 +8,15 @@ using System;
 
 namespace Assets.Scripts.Components.Shooting
 {
+	/// <summary>
+	/// Class for shooting event.
+	/// </summary>
 	[Serializable]
 	public class ShootingEvent : UnityEvent {}
 
+	/// <summary>
+	/// Class that allows character to shoot.
+	/// </summary>
 	public class ShootingComponent : MonoBehaviour
 	{
 		private BulletPool _bulletPool;
@@ -20,6 +26,9 @@ namespace Assets.Scripts.Components.Shooting
 			_bulletPool = FindObjectOfType<BulletPool>();
 		}
 
+		/// <summary>
+		/// Shoots the bullet from character position.
+		/// </summary>
 		public void Shoot()
 		{
 			var bullet = _bulletPool.GetObject(transform.position);

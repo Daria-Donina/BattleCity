@@ -1,24 +1,28 @@
 using Assets.Scripts.Components.Moving.StateMachine;
 using Assets.Scripts.Components.Moving.StateMachine.States;
 using Assets.Scripts.Controllers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Components.Moving
 {
+	/// <summary>
+	/// Component that allows character to move.
+	/// </summary>
 	[RequireComponent(typeof(Animator))]
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class MovingComponent : MonoBehaviour
 	{
+		/// <summary>
+		/// Character moving state.
+		/// </summary>
+		public MovingState State { private get; set; } = GoingUpState.GetInstance();
+
 		[SerializeField]
 		private float speed;
 
 		private Animator _animator;
 		private Rigidbody2D _rigidbody;
 		private MovingController _controller;
-
-		public MovingState State { private get; set; } = GoingUpState.GetInstance();
 
 		private void Awake()
 		{

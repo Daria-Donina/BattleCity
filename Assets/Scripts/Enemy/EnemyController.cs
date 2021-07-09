@@ -9,33 +9,80 @@ using UnityEngine;
 
 namespace Assets.Scripts.Enemy
 {
+	/// <summary>
+	/// Class implementing Enemy moving and shooting logic.
+	/// </summary>
 	public class EnemyController : MovingController
 	{
+		/// <summary>
+		/// Class storing and controlling direction.
+		/// </summary>
+		private class Direction
+		{
+			private static Vector3 _left = Vector3.left;
+			private static Vector3 _right = Vector3.right;
+			private static Vector3 _up = Vector3.up;
+			private static Vector3 _down = Vector3.down;
+
+			private Vector3[] _directions = { _left, _right, _up, _down };
+
+			private int _previousDirectionIndex = -1;
+
+			/// <summary>
+			/// Get a direction different from the current one.
+			/// </summary>
+			/// <returns> A direction vector.</returns>
+			public Vector3 GetAnotherDirection()
+			{
+				var index = Random.Range(0, _directions.Length - 1);
+
+				var direction = _directions[index];
+
+				_previousDirectionIndex = index;
+				RearrangeArray();
+
+				return direction;
+			}
+
+			private void RearrangeArray()
+			{
+				Swap(ref _directions[_previousDirectionIndex], 
+					ref _directions[_directions.Length - 1]);
+			}
+
+			private void Swap(ref Vector3 a, ref Vector3 b)
+			{
+				var temp = a;
+				a = b;
+				b = temp;
+			}
+		}
+
 		public override float X { get; protected set; }
 		public override float Y { get; protected set; }
+		
+		/// <summary>
+		/// Event invoking when a shot needs to be fired.
+		/// </summary>
+		public ShootingEvent FireShot = new ShootingEvent(); 
+
+		private const float DelayForShootingStart = 0.5f;
 
 		[SerializeField] private int minDirectionTime = 1;
 		[SerializeField] private int maxDirectionTime = 6;
 
-		[SerializeField] private int shotDelay;
+		[SerializeField] private int shotDelay = 1;
 
-		public ShootingEvent FireShot = new ShootingEvent(); 
-
-		private int[] _coordinates = new int[4] { -1, 1, 0, 0 };
-		private IEnumerator _movingRoutine;
-		private IEnumerator _shootingRoutine;
-
-		private const float DelayForShootingStart = 0.5f;
+		private Direction _direction;
 
 		private void Awake()
 		{
-			_movingRoutine = DirectionRoutine();
-			_shootingRoutine = ShootingRoutine();
+			_direction = new Direction();
 		}
 
 		private void OnEnable()
 		{
-			StartCoroutine(_movingRoutine);
+			StartCoroutine(DirectionRoutine());
 
 			StartCoroutine(DelayShootCoroutine());
 		}
@@ -49,18 +96,18 @@ namespace Assets.Scripts.Enemy
 		{
 			yield return new WaitForSeconds(DelayForShootingStart);
 
-			StartCoroutine(_shootingRoutine);
+			StartCoroutine(ShootingRoutine());
 		}
 
 		private IEnumerator DirectionRoutine()
 		{
 			while (true)
 			{
+				ChangeDirection();
+
 				yield return new WaitForSeconds(
 					Random.Range(minDirectionTime, maxDirectionTime)
 					);
-
-				ChangeDirection();
 			}
 		}
 
@@ -68,26 +115,20 @@ namespace Assets.Scripts.Enemy
 		{
 			while (true)
 			{
+				Shoot();
+
 				yield return new WaitForSeconds(
 					shotDelay
 					);
-
-				Shoot();
 			}
 		}
 
 		private void ChangeDirection()
 		{
-			X = _coordinates[Random.Range(0, _coordinates.Length)];
+			var direction = _direction.GetAnotherDirection();
 
-			if (X == 0)
-			{
-				Y = _coordinates[Random.Range(0, _coordinates.Length - 2)];
-			}
-			else
-			{
-				Y = 0;
-			}
+			X = direction.x;
+			Y = direction.y;
 		}
 
 		private void Shoot()

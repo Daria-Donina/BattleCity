@@ -1,13 +1,11 @@
 ﻿using Assets.Scripts.Components.Damaging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Components.Shooting.Bullets
 {
+	/// <summary>
+	/// Class implementing bullet.
+	/// </summary>
 	[RequireComponent(typeof(Rigidbody2D))]
 	[RequireComponent(typeof(Collider2D))]
 	public class Bullet : MonoBehaviour
@@ -34,6 +32,10 @@ namespace Assets.Scripts.Components.Shooting.Bullets
 			ReturnToPool();
 		}
 
+		/// <summary>
+		/// Shoots the bullet in a given direction.
+		/// </summary>
+		/// <param name="direction"> Direction to shoot bullet in.</param>
 		public void Shoot(Vector2 direction)
 		{
 			transform.SetParent(null);
