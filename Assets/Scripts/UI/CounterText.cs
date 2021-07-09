@@ -10,8 +10,15 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
+	/// <summary>
+	/// Class implementing events that change counters texts.
+	/// </summary>
 	[Serializable]
 	public class CounterTextEvent : UnityEvent<int> { }
+
+	/// <summary>
+	/// Class implementing counter text changing logic.
+	/// </summary>
 	[RequireComponent(typeof(Text))]
 	public class CounterText : MonoBehaviour
 	{

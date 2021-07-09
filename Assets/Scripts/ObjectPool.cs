@@ -7,6 +7,10 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
+	/// <summary>
+	/// Class implementing pool of objects.
+	/// </summary>
+	/// <typeparam name="T"> Type of object to store in pool.</typeparam>
 	public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 	{
 		[SerializeField]
@@ -23,6 +27,11 @@ namespace Assets.Scripts
 			}
 		}
 
+		/// <summary>
+		/// Get and instantiate object from the pool.
+		/// </summary>
+		/// <param name="position"> Position to instantiate object.</param>
+		/// <returns> Instantiated object.</returns>
 		public T GetObject(Vector3 position)
 		{
 			T obj;

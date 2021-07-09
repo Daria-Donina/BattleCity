@@ -10,8 +10,14 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts.Player
 {
+	/// <summary>
+	/// Class implementing Player moving and shooting logic.
+	/// </summary>
 	public class PlayerController : MovingController
 	{
+		/// <summary>
+		/// Event invoking when shooting button is pressed.
+		/// </summary>
 		public ShootingEvent ShootButtonPressed = new ShootingEvent();
 
 		public override float X { get; protected set; }
