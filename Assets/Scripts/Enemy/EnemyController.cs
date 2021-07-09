@@ -25,6 +25,8 @@ namespace Assets.Scripts.Enemy
 		private IEnumerator _movingRoutine;
 		private IEnumerator _shootingRoutine;
 
+		private const float DelayForShootingStart = 0.5f;
+
 		private void Awake()
 		{
 			_movingRoutine = DirectionRoutine();
@@ -34,18 +36,20 @@ namespace Assets.Scripts.Enemy
 		private void OnEnable()
 		{
 			StartCoroutine(_movingRoutine);
-			StartCoroutine(_shootingRoutine);
-		}
 
-		private void OnDisable()
-		{
-			StopCoroutine(_movingRoutine);
-			StopCoroutine(_shootingRoutine);
+			StartCoroutine(DelayShootCoroutine());
 		}
 
 		private void OnCollisionEnter2D(Collision2D collision)
 		{
 			ChangeDirection();
+		}
+
+		private IEnumerator DelayShootCoroutine()
+		{
+			yield return new WaitForSeconds(DelayForShootingStart);
+
+			StartCoroutine(_shootingRoutine);
 		}
 
 		private IEnumerator DirectionRoutine()
